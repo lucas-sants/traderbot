@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+
+  database:
+    container_name: crypto_database
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: "crypto"
+    command: mysqld --sql-mode=traditional
+    ports:
+      - "3306:3306"
+  application:
+    container_name: crypto_app
+    image: node:lts-bullseye
+    environment:
+      NODE_ENV: "staging"
+      DB_URL: "mysql://root:1234@database:3306/crypto"
+    working_dir: /app
+    command: bash -ci 'yarn install && yarn knex migrate:latest --verbose --verbose && yarn run start'
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+    links:
+      - database

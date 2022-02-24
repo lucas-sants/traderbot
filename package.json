@@ -1,0 +1,26 @@
+{
+  "name": "cryptocandler",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "ts-node-dev src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "14.0.5",
+    "@types/ws": "^8.5.0",
+    "ts-node-dev": "^1.1.8",
+    "tslint": "6.1.2",
+    "typescript": "3.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "knex": "^1.0.3",
+    "mysql2": "^2.3.3",
+    "objection": "^3.0.1",
+    "ws": "^8.5.0"
+  }
+}
