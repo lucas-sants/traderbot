@@ -28,7 +28,19 @@ try {
   });
 
   consumer.startObserverForMinutesRange(
-    0.1,
+    1,
+    async (metrics: CoinDataMetrics) => {
+      await databaseMetricsService.saveMetricsToDabatase(metrics);
+    }
+  );
+  consumer.startObserverForMinutesRange(
+    5,
+    async (metrics: CoinDataMetrics) => {
+      await databaseMetricsService.saveMetricsToDabatase(metrics);
+    }
+  );
+  consumer.startObserverForMinutesRange(
+    10,
     async (metrics: CoinDataMetrics) => {
       await databaseMetricsService.saveMetricsToDabatase(metrics);
     }

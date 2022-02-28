@@ -12,7 +12,6 @@ import {
 export class MessageConsumer implements IMessageConsumer {
   constructor() {
     this.consume = this.consume.bind(this);
-    this.collectCandlestick = this.collectCandlestick.bind(this);
     this.startObserverForMinutesRange =
       this.startObserverForMinutesRange.bind(this);
   }
@@ -43,13 +42,6 @@ export class MessageConsumer implements IMessageConsumer {
     minutes: number,
     callback: CoinDataMetricsCallback
   ) {
-    this.collectCandlestick(minutes, callback);
-  }
-
-  private collectCandlestick(
-    minutes: number,
-    callback: CoinDataMetricsCallback
-  ) {
     setInterval(() => {
       if (this.startedConsume) {
         const currentTime = new Date();
@@ -65,13 +57,14 @@ export class MessageConsumer implements IMessageConsumer {
             if (dataInsideTimeRange?.length) {
               const { open, low, high, close } =
                 this.getMetricsInsideCoinData(dataInsideTimeRange);
-              currentTime.setMinutes(currentTime.getMinutes() - minutes);
+              const observationStartTime = {...currentTime};
+              observationStartTime.setMinutes(observationStartTime.getMinutes() - minutes);
               callback({
                 close,
                 open,
                 low,
                 high,
-                datetime: currentTime,
+                datetime: observationStartTime,
                 periodicity: minutes,
                 coin: CoinsIds[coin as keyof typeof CoinsIds],
               });
