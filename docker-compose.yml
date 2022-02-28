@@ -11,7 +11,7 @@ services:
       MYSQL_DATABASE: "crypto"
     command: mysqld --sql-mode=traditional
     ports:
-      - "3306:3306"
+      - "3310:3306"
   application:
     container_name: crypto_app
     image: node:lts-bullseye
@@ -19,10 +19,11 @@ services:
       NODE_ENV: "staging"
       DB_URL: "mysql://root:1234@database:3306/crypto"
     working_dir: /app
-    command: bash -ci 'yarn install && yarn knex migrate:latest --verbose --verbose && yarn run start'
+    command: bash -ci 'yarn && yarn knex migrate:latest --verbose && yarn start'
     volumes:
       - .:/app
     depends_on:
-      - database
+      - "database"
+    restart: on-failure
     links:
       - database

@@ -57,7 +57,7 @@ export class MessageConsumer implements IMessageConsumer {
             if (dataInsideTimeRange?.length) {
               const { open, low, high, close } =
                 this.getMetricsInsideCoinData(dataInsideTimeRange);
-              const observationStartTime = {...currentTime};
+              const observationStartTime = new Date(currentTime);
               observationStartTime.setMinutes(observationStartTime.getMinutes() - minutes);
               callback({
                 close,
