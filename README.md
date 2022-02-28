@@ -33,6 +33,7 @@ Do contrário, o Banco de Dados estará disponível na porta "3306" com o usuár
  - [MySQL 2](https://github.com/sidorares/node-mysql2#readme)
  - [Dotenv](https://github.com/motdotla/dotenv#readme)
  - [WS](https://github.com/websockets/ws)
+ - [Jest](https://jestjs.io/pt-BR/)
 
 <div id='conclusion'/>
 
