@@ -7,10 +7,10 @@ Processamento e agregação de cotações em candlesticks, com dados de abertura
 
 ## Índice
 
- 1. [Introdução](#introduction)
+ 1. [Execução](#execution)
  2. [Tecnologias](#techs)
- 4. [Execução](#execution)
- 5. [Conclusão](#conclusion)
+ 3. [Conclusão](#conclusion)
+ 
  <div id='execution'/>
 
 ## Execução 
