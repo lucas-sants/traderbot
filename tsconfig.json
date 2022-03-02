@@ -7,7 +7,7 @@
     "noImplicitAny": false,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
-    "types": [],
+    "types": ["jest"],
     "skipLibCheck": true
   },
   "include": ["src/*"],
